@@ -11,8 +11,16 @@ import products from './data/products.json';
 })
 export class ProductsListComponent {
   productsList: { id: Number, name: String, category: String, price: Number, inStock: Boolean, description: String, rating: number }[] = products;
+  // Définition des clés comme étant des clés du type produit
+  keys: Array<keyof typeof this.productsList[number]> = ["id", "name", "category", "price", "inStock", "description", "rating"];
 
   constructor() {
-    console.log(this.productsList);
+    for (let productIndex = 0; productIndex < this.productsList.length; productIndex++) {
+
+      for (let keyIndex = 0; keyIndex < this.keys.length; keyIndex++) {
+        console.log(this.productsList[productIndex][this.keys[keyIndex]]);
+      }
+
+    }
   }
 }
