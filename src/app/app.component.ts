@@ -12,4 +12,10 @@ import { SearchEngineComponent } from './search-engine/search-engine.component';
 })
 export class AppComponent {
   title = 'tp03_gerard_christopher';
+
+  inStock: boolean = false;
+
+  onInStockChange(value: boolean) {
+    this.inStock = value;
+  }
 }

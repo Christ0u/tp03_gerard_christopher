@@ -20,7 +20,7 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let product of productsList">
+                <tr *ngFor="let product of filteredProducts">
                     <td *ngFor="let key of keys">
                         {{ product[key] }}
                     </td>

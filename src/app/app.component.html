@@ -1,5 +1,4 @@
 <h1> Catalogue de produits </h1>
 
-<app-search-engine></app-search-engine>
-
-<app-products-list></app-products-list>
+<app-search-engine (inStockChange)="onInStockChange($event)"></app-search-engine>
+<app-products-list [inStock]="inStock"></app-products-list>
