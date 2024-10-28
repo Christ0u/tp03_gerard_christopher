@@ -11,32 +11,29 @@ import products from './data/products.json';
 })
 
 export class ProductsListComponent {
-  productsList: { id: Number, name: String, category: String, price: Number, inStock: Boolean, description: String, rating: number }[] = products;
-  // Définition des clés comme étant des clés du type produit
+  // Propriétés
+  productsList: { id: Number, name: String, category: String, price: number, inStock: Boolean, description: String, rating: number }[] = products;
   keys: Array<keyof typeof this.productsList[number]> = ["id", "name", "category", "price", "inStock", "description", "rating"];
   filteredProducts = [...this.productsList];
+
   @Input() inStock: boolean = false;
+  @Input() maxPrice: number = 100;
 
+  // Méthodes
   ngOnChanges() {
-    // Filtre les produits en fonction de inStock
-    if (this.inStock) {
-      // Si inStock est vrai, filtrer les produits
-      this.filteredProducts = this.productsList.filter(product => product.inStock);
-    }
-    else {
-      // Sinon, copier tous les produits
-      this.filteredProducts = [...this.productsList];
-    }
+
+    // Applique les deux filtres en un seul passage
+    this.filteredProducts = this.productsList.filter( product => (!this.inStock || product.inStock) && (product.price <= this.maxPrice) );
   }
 
 
-  constructor() {
-    for (let productIndex = 0; productIndex < this.productsList.length; productIndex++) {
+  // constructor() {
+  //   for (let productIndex = 0; productIndex < this.productsList.length; productIndex++) {
 
-      for (let keyIndex = 0; keyIndex < this.keys.length; keyIndex++) {
-        console.log(this.productsList[productIndex][this.keys[keyIndex]]);
-      }
+  //     for (let keyIndex = 0; keyIndex < this.keys.length; keyIndex++) {
+  //       console.log(this.productsList[productIndex][this.keys[keyIndex]]);
+  //     }
 
-    }
-  }
+  //   }
+  // }
 }

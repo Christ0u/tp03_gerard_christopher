@@ -10,12 +10,18 @@ import { SearchEngineComponent } from './search-engine/search-engine.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'tp03_gerard_christopher';
 
   inStock: boolean = false;
+  maxPrice: number = 100;
 
   onInStockChange(value: boolean) {
     this.inStock = value;
+  }
+
+  onMaxPriceChange(value: number) {
+    this.maxPrice = value;
   }
 }
