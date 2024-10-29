@@ -16,6 +16,7 @@ export class AppComponent {
 
   inStock: boolean = false;
   maxPrice: number = 100;
+  minRating: number = 0;
 
   onInStockChange(value: boolean) {
     this.inStock = value;
@@ -23,5 +24,10 @@ export class AppComponent {
 
   onMaxPriceChange(value: number) {
     this.maxPrice = value;
+  }
+
+  onMinRatingChange(value: number)
+  {
+    this.minRating = value;
   }
 }

@@ -18,12 +18,12 @@ export class ProductsListComponent {
 
   @Input() inStock: boolean = false;
   @Input() maxPrice: number = 100;
+  @Input() minRating: number = 0;
 
   // Méthodes
   ngOnChanges() {
-
     // Applique les deux filtres en un seul passage
-    this.filteredProducts = this.productsList.filter( product => (!this.inStock || product.inStock) && (product.price <= this.maxPrice) );
+    this.filteredProducts = this.productsList.filter( product => (!this.inStock || product.inStock) && (product.price <= this.maxPrice) && (product.rating >= this.minRating) );
   }
 
 

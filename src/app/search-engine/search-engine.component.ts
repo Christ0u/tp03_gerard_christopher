@@ -17,17 +17,22 @@ export class SearchEngineComponent {
   maxPrice: number = 100;
   @Output() maxPriceChange = new EventEmitter<number>();
 
+  minRating: number = 0;
+  @Output() minRatingChange = new EventEmitter<number>();
+
   // Méthodes
   onClick()
   {
     this.inStock = !this.inStock;
     this.inStockChange.emit(this.inStock);
-    console.log(this.inStock);
+    //console.log(this.inStock);
   }
 
   onInput()
   {
     this.maxPriceChange.emit(this.maxPrice);
-    console.log(this.maxPrice);
+    this.minRatingChange.emit(this.minRating);
+    //console.log(this.minRating);
+    //console.log(this.maxPrice);
   }
 }
